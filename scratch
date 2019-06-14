@@ -29,7 +29,7 @@ def countUP3():
 def getout():
     window.destroy()
 
-def anggimotti():
+def anggi_motti():
     from scratch_1 import scratch_function
     window.destroy()
     scratch_function()
@@ -61,7 +61,7 @@ button = tkinter.Button(window, overrelief="solid", width=30, command=getout, re
                         activebackground="black", text = "밖으로 런")
 button.place(x=1600, y=100)
 
-button = tkinter.Button(window, overrelief="solid", width=50, command=anggimotti, repeatdelay=1, repeatinterval=100,
+button = tkinter.Button(window, overrelief="solid", width=50, command=anggi_motti, repeatdelay=1, repeatinterval=100,
                         activebackground="black", text = "새 살이 돋아난다")
 button.place(x=1, y=350)
 
