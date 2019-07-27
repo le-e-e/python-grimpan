@@ -1,0 +1,92 @@
+import tkinter
+
+#기본값
+color = "black"
+now_color = "버튼을 눌러보세요"
+
+#윈도우 창
+paper = tkinter.Tk()
+paper.geometry("1000x800")
+paper.resizable(1, 1)
+paper.title("selfmade goorimpan")
+
+#함수
+def mouse1(event):
+    global lastx1, lasty1
+    canvas.create_line(event.x, event.y, event.x + 1, event.y + 1, fill=color, width=3)
+    lastx1, lasty1 = event.x, event.y
+
+def mouse2(event):
+    global lastx1, lasty1
+    canvas.create_line(lastx1, lasty1, event.x, event.y, fill=color, width=3)
+    lastx1, lasty1 = event.x, event.y
+
+
+def crazy_yellow():
+    global color, now_color
+    color = "yellow"
+    now_color = "노란색"
+    now_crazycolor.config(text="지금의 개미친색깔은? →  " + str(now_color))
+
+
+def crazy_green():
+    global color, now_color
+    color = "green"
+    now_color = "초록색"
+    now_crazycolor.config(text="지금의 개미친색깔은? →  " + str(now_color))
+
+
+def crazy_blue():
+    global color, now_color
+    color = "blue"
+    now_color = "파란색"
+    now_crazycolor.config(text="지금의 개미친색깔은? →  " + str(now_color))
+
+
+def crazy_erazer():
+    global color, now_color
+    color = "white"
+    now_color = "지우개"
+    now_crazycolor.config(text="지금의 개미친색깔은? →  " + str(now_color))
+
+
+def all_clear():
+    canvas.delete("all")
+
+#틀
+frame = tkinter.Frame(paper, width=600, height=400, relief="solid", bd=2)
+frame.place(x=1, y=1)
+
+canvas = tkinter.Canvas(frame, width=600, height=400, cursor="pencil", bg="white", bd=5)
+
+#현재 색 텍스트
+now_crazycolor = tkinter.Label(paper, text="지금의 개미친색깔은? →  " + now_color)
+now_crazycolor.place(x=200, y=500)
+
+#버튼 생성
+yellow = tkinter.Button(paper, overrelief="solid", width=10, command=crazy_yellow, repeatdelay=1, repeatinterval=100,
+                        activebackground="yellow", height=10, text="미친 노란색", bd=3)
+yellow.place(x=100, y=600)
+
+green = tkinter.Button(paper, overrelief="solid", width=10, command=crazy_green, repeatdelay=1, repeatinterval=100,
+                         activebackground="green", height=10, text="미친 초록색", bd=3)
+green.place(x=200, y=600)
+
+black = tkinter.Button(paper, overrelief="solid", width=10, command=crazy_blue, repeatdelay=1, repeatinterval=100,
+                         activebackground="blue", height=10, text="미친 파란색", bd=3)
+black.place(x=300, y=600)
+
+allcle = tkinter.Button(paper, overrelief="solid", width=10, command=all_clear, repeatdelay=1, repeatinterval=100,
+                       activebackground="blue", height=5, text="미친 초기화", bd=3)
+allcle.place(x=700, y=300)
+
+erazer = tkinter.Button(paper, overrelief="solid", width=10, command=crazy_erazer, repeatdelay=1, repeatinterval=100,
+                       activebackground="white", height=10, text="미친 지우개", bd=3)
+erazer.place(x=400, y=600)
+
+#마우스
+canvas.bind("<B1-Motion>", mouse2)
+canvas.bind("<Button-1>", mouse1)
+canvas.pack()
+
+paper.mainloop()
